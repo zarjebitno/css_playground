@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #000;
+  display: grid;
+  place-items: center;
+}
+
+.card-group,
+.card,
+.cards-wrapper {
+  aspect-ratio: 5 / 7;
+}
+
+.card-group,
+.big-card,
+.cards-wrapper {
+  width: 250px;
+}
+
+// transitions & click animations
+// setting different background images to each card group
+.card-group {
+  position: absolute;
+  transition: transform 400ms ease;
+
+  &[data-status="inactive"] {
+    scale: 0;
+  }
+
+  &[data-status="becoming-active-from-before"] {
+    transform: translateX(-50%) scale(0);
+    transition: none;
+  }
+
+  &[data-status="becoming-active-from-after"] {
+    transform: translateX(50%) scale(0);
+    transition: none;
+  }
+
+  &[data-status="after"] {
+    transform: translateX(50%) scale(0)
+  }
+
+  &[data-status="before"] {
+    transform: translateX(-50%) scale(0)
+  }
+
+  &[data-index="0"] {
+    .big-card {
+      &:first-of-type {
+        background-image: url('https://images.unsplash.com/photo-1611419010196-a360856fc42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');
+      }
+
+      &:nth-of-type(2) {
+        background-image: url('https://images.unsplash.com/photo-1473286835901-04adb1afab03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
+      }
+
+      &:nth-of-type(3) {
+        background-image: url('https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
+      }
+
+      &:nth-of-type(4) {
+        background-image: url('https://images.unsplash.com/photo-1613679074971-91fc27180061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
+      }
+    }
+
+    .small-card {
+      &:nth-of-type(5) {
+        background-image: url('https://images.unsplash.com/photo-1586349948112-e980a7d194ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80')
+      }
+  
+      &:nth-of-type(6) {
+        background-image: url('https://images.unsplash.com/photo-1580130718646-9f6942092ad3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80')
+      }
+  
+      &:nth-of-type(7) {
+        background-image: url('https://images.unsplash.com/photo-1592795694700-d3ac8a1e2f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=719&q=80')
+      }
+  
+      &:nth-of-type(8) {
+        background-image: url('https://images.unsplash.com/photo-1543914004-01dfd361dc2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=655&q=80')
+      }
+    }
+  }
+
+  &[data-index="1"] {
+    .big-card {
+      &:first-of-type {
+        background-image: url('https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80');
+      }
+
+      &:nth-of-type(2) {
+        background-image: url('https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+      }
+
+      &:nth-of-type(3) {
+        background-image: url('https://images.unsplash.com/photo-1550686041-366ad85a1355?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+      }
+
+      &:nth-of-type(4) {
+        background-image: url('https://images.unsplash.com/photo-1502230831726-fe5549140034?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+    }
+
+    .small-card {
+      &:nth-of-type(5) {
+        background-image: url('https://images.unsplash.com/photo-1621964614855-04b453f05d5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(6) {
+        background-image: url('https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODB8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(7) {
+        background-image: url('https://images.unsplash.com/photo-1595824228556-440f8776f97d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODN8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(8) {
+        background-image: url('https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTd8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+    }
+  }
+
+  &[data-index="2"] {
+    .big-card {
+      &:first-of-type {
+        background-image: url('https://images.unsplash.com/photo-1503249023995-51b0f3778ccf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+      }
+
+      &:nth-of-type(2) {
+        background-image: url('https://images.unsplash.com/photo-1623364134078-d8bfb38fd84c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+      }
+
+      &:nth-of-type(3) {
+        background-image: url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTF8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+      }
+
+      &:nth-of-type(4) {
+        background-image: url('https://images.unsplash.com/photo-1478479474071-8a3014d422c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fHJhbmRvbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')
+      }
+    }
+
+    .small-card {
+      &:nth-of-type(5) {
+        background-image: url('https://images.unsplash.com/photo-1560963619-c9e49c9380bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTAxfHxyYW5kb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(6) {
+        background-image: url('https://images.unsplash.com/photo-1572717600683-9e1f35efa29c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxyYW5kb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(7) {
+        background-image: url('https://images.unsplash.com/photo-1484501893812-f1923a3dd028?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIwfHxyYW5kb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')
+      }
+  
+      &:nth-of-type(8) {
+        background-image: url('https://images.unsplash.com/photo-1587340532186-b92aa5512b6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHxyYW5kb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')
+      }
+    }
+  }
+
+  &:hover {
+    .big-card {
+      &:first-of-type {
+        transform: translate(-85%, 6%) rotate(-15deg);
+      }
+  
+      &:nth-of-type(2) {
+        transform: translateX(-33%) rotate(-7deg);
+      }
+  
+      &:nth-of-type(3) {
+        transform: translate(15%) rotate(5deg);
+      }
+  
+      &:nth-of-type(4) {
+        transform: translate(65%, 10%) rotate(25deg);
+      }
+    }
+
+    .small-card {
+      &:nth-of-type(5) {
+        transform: translate(-200%, -200%) rotate(15deg);
+      }
+
+      &:nth-of-type(6) {
+        transform: translate(200%, -200%) rotate(-9deg);
+      }
+
+      &:nth-of-type(7) {
+        transform: translate(-300%, 100%) rotate(-25deg);
+      }
+
+      &:nth-of-type(8) {
+        transform: translate(100%, 150%) rotate(5deg);
+      }
+    }
+  }
+}
+
+.card {
+  aspect-ratio: 5 / 7;
+  background: blue;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: .6s;
+
+  &.big-card {
+    z-index: 3;
+    background-size: cover;
+
+    &:first-of-type {
+      transform: translateX(-10%) rotate(-5deg);
+    }
+
+    &:nth-of-type(2) {
+      transform: translateX(-3%) rotate(13deg);
+    }
+
+    &:nth-of-type(3) {
+      transform: translate(-5%) rotate(-5deg);
+    }
+
+    &:nth-of-type(4) {
+      transform: rotate(2deg);
+    }
+  }
+
+  &.small-card {
+    width: 100px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+  }
+}
+
+.swiper-actions {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    aspect-ratio: 1 / 1;
+    width: 5rem;
+    padding: 1rem 0;
+    border-radius: 100%;
+    border: .2rem solid #fff;
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+  }
+}
