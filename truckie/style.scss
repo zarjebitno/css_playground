@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #49a2ba;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  padding: 3rem 20rem;
+  border: none;
+  background: #000;
+  border-radius: 5rem;
+  overflow: hidden;
+  position: relative;
+
+  & > span {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+
+    &:first-of-type {
+      opacity: 1;
+      transition: opacity .6s, transform 5.3s;
+    }
+
+    &:last-of-type {
+      transition: opacity .8s 10s;
+    }
+  }
+
+  .package {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    // background: red;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 20%;
+    opacity: 0;
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  .roadlines {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+    z-index: 0;
+    // remove me
+    color: #fff;
+    font-size: 2rem;
+    white-space: nowrap;
+    // end remove me
+    // transition: transform 4s 4s;
+  }
+}
+
+.truck {
+  display: flex;
+  gap: 3px;
+  width: 10rem;
+  height: 3rem;
+  transform: translateX(500%);
+  transition: transform 2s;
+  z-index: 10;
+
+  .back {
+    background-color: #fff;
+    width: 80%;
+    border-radius: .125rem;
+    position: relative;
+
+    .door {
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 50%;
+      background: #fff;
+
+      &:first-of-type {
+        top: 0;
+        transform-origin: top;
+      }
+
+      &:last-of-type {
+        bottom: 0;
+        transform-origin: bottom;
+      }
+    }
+  }
+
+  .front {
+    background-color: #4471db;
+    width: 20%;
+    border-radius: 0 .5rem .5rem 0;
+    display: flex;
+    align-items: center;
+
+    .shadow {
+      width: 25%;
+      height: 100%;
+      background-color: #84a2e8;
+    }
+
+    .window {
+      width: 35%;
+      background-color: #000;
+      height: 90%;
+      border-radius: 0 .725rem .725rem 0;
+      margin-left: 3px;
+    }
+
+    .lights {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 4px 0;
+      margin-left: auto;
+
+      .light {
+        width: 3px;
+        height: 7px;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+button.movement {
+  .package {
+    animation: package 5s ease forwards;
+  }
+
+  .truck {
+    animation: truckGoBrmBrm 10s ease forwards;
+
+    .back {
+      .door {
+        &:first-of-type {
+          animation: doorTopOpen 2s ease forwards 1.2s;
+        }
+
+        &:last-of-type {
+          animation: doorBottomOpen 2s ease forwards 1.2s;
+        }
+      }
+    }
+  }
+
+  span {
+    &:first-of-type {
+      opacity: 0;
+      transform: translateX(-500%);
+    }
+
+    &:last-of-type {
+      opacity: 1;
+    }
+  }
+
+  .roadlines {
+    // transform: translate(0, -50%);
+    animation: moveRoad 7s ease forwards 4s;
+  }
+}
+
+@keyframes doorTopOpen {
+  0% {
+    transform: rotate(0deg)
+  } 
+
+  60% {
+    transform: rotate(120deg)
+  }
+
+  100% {
+    transform: rotate(0deg)
+  }
+}
+
+@keyframes doorBottomOpen {
+  0% {
+    transform: rotate(0deg)
+  } 
+
+  80% {
+    transform: rotate(-120deg)
+  }
+
+  100% {
+    transform: rotate(0deg)
+  }
+}
+
+@keyframes truckGoBrmBrm {
+  0% {
+    transform: translateX(500%);
+  }
+
+  20%, 40% {
+    transform: translateX(0);
+  }
+
+  55% {
+    transform: translateX(150%);
+  }
+
+  80% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(500%);
+  }
+}
+
+@keyframes package {
+  0% {
+    left: 20%;
+    opacity: 0;
+  }
+
+  40% {
+    left: 20%;
+    opacity: 1;
+  }
+
+  69% {
+    opacity: 1;
+  }
+
+  70% {
+    left: 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes moveRoad {
+  from {
+    right: 0;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0;
+  }
+
+  to {
+    right: 300%;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,382 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #49a2ba;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  padding: 3rem 20rem;
+  border: none;
+  background: #000;
+  border-radius: 5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+button > span {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+button > span:first-of-type {
+  opacity: 1;
+  -webkit-transition: opacity .6s, -webkit-transform 5.3s;
+  transition: opacity .6s, -webkit-transform 5.3s;
+  transition: opacity .6s, transform 5.3s;
+  transition: opacity .6s, transform 5.3s, -webkit-transform 5.3s;
+}
+
+button > span:last-of-type {
+  -webkit-transition: opacity .8s 10s;
+  transition: opacity .8s 10s;
+}
+
+button .package {
+  width: 30px;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+  left: 20%;
+  opacity: 0;
+  z-index: 1;
+}
+
+button .package svg {
+  width: 100%;
+  height: 100%;
+}
+
+button .package svg path {
+  fill: #fff;
+}
+
+button .roadlines {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
+  z-index: 0;
+  color: #fff;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+.truck {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  width: 10rem;
+  height: 3rem;
+  -webkit-transform: translateX(500%);
+          transform: translateX(500%);
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
+  z-index: 10;
+}
+
+.truck .back {
+  background-color: #fff;
+  width: 80%;
+  border-radius: .125rem;
+  position: relative;
+}
+
+.truck .back .door {
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 50%;
+  background: #fff;
+}
+
+.truck .back .door:first-of-type {
+  top: 0;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+
+.truck .back .door:last-of-type {
+  bottom: 0;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+.truck .front {
+  background-color: #4471db;
+  width: 20%;
+  border-radius: 0 .5rem .5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.truck .front .shadow {
+  width: 25%;
+  height: 100%;
+  background-color: #84a2e8;
+}
+
+.truck .front .window {
+  width: 35%;
+  background-color: #000;
+  height: 90%;
+  border-radius: 0 .725rem .725rem 0;
+  margin-left: 3px;
+}
+
+.truck .front .lights {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+  padding: 4px 0;
+  margin-left: auto;
+}
+
+.truck .front .lights .light {
+  width: 3px;
+  height: 7px;
+  background-color: #fff;
+}
+
+button.movement .package {
+  -webkit-animation: package 5s ease forwards;
+          animation: package 5s ease forwards;
+}
+
+button.movement .truck {
+  -webkit-animation: truckGoBrmBrm 10s ease forwards;
+          animation: truckGoBrmBrm 10s ease forwards;
+}
+
+button.movement .truck .back .door:first-of-type {
+  -webkit-animation: doorTopOpen 2s ease forwards 1.2s;
+          animation: doorTopOpen 2s ease forwards 1.2s;
+}
+
+button.movement .truck .back .door:last-of-type {
+  -webkit-animation: doorBottomOpen 2s ease forwards 1.2s;
+          animation: doorBottomOpen 2s ease forwards 1.2s;
+}
+
+button.movement span:first-of-type {
+  opacity: 0;
+  -webkit-transform: translateX(-500%);
+          transform: translateX(-500%);
+}
+
+button.movement span:last-of-type {
+  opacity: 1;
+}
+
+button.movement .roadlines {
+  -webkit-animation: moveRoad 7s ease forwards 4s;
+          animation: moveRoad 7s ease forwards 4s;
+}
+
+@-webkit-keyframes doorTopOpen {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  60% {
+    -webkit-transform: rotate(120deg);
+            transform: rotate(120deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes doorTopOpen {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  60% {
+    -webkit-transform: rotate(120deg);
+            transform: rotate(120deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes doorBottomOpen {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  80% {
+    -webkit-transform: rotate(-120deg);
+            transform: rotate(-120deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes doorBottomOpen {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  80% {
+    -webkit-transform: rotate(-120deg);
+            transform: rotate(-120deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes truckGoBrmBrm {
+  0% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+  20%, 40% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  55% {
+    -webkit-transform: translateX(150%);
+            transform: translateX(150%);
+  }
+  80% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+}
+
+@keyframes truckGoBrmBrm {
+  0% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+  20%, 40% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  55% {
+    -webkit-transform: translateX(150%);
+            transform: translateX(150%);
+  }
+  80% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+}
+
+@-webkit-keyframes package {
+  0% {
+    left: 20%;
+    opacity: 0;
+  }
+  40% {
+    left: 20%;
+    opacity: 1;
+  }
+  69% {
+    opacity: 1;
+  }
+  70% {
+    left: 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes package {
+  0% {
+    left: 20%;
+    opacity: 0;
+  }
+  40% {
+    left: 20%;
+    opacity: 1;
+  }
+  69% {
+    opacity: 1;
+  }
+  70% {
+    left: 50%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes moveRoad {
+  from {
+    right: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  to {
+    right: 300%;
+    opacity: 0;
+  }
+}
+
+@keyframes moveRoad {
+  from {
+    right: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  to {
+    right: 300%;
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
